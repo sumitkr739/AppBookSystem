@@ -1,16 +1,22 @@
 {
-  "name": ".",
+  "name": "app-book-system",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "blitz dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "seed": "tsx prisma/seed.ts",
+    "db:seed": "npm run seed",
+    "db:reset": "npx prisma migrate reset --force && npm run seed",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
   },
   "prisma": {
     "schema": "db/schema.prisma"
@@ -28,10 +34,17 @@
     "@blitzjs/auth": "3.0.2",
     "@blitzjs/next": "3.0.2",
     "@blitzjs/rpc": "3.0.2",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@mui/icons-material": "5.18.0",
+    "@mui/material": "5.18.0",
+    "@mui/x-date-pickers": "8.11.3",
+    "@mui/x-date-pickers-pro": "8.11.3",
     "@prisma/client": "5.4.2",
     "blitz": "3.0.2",
+    "date-fns": "4.1.0",
     "formik": "2.4.6",
-    "next": "15.0.1",
+    "next": "15.5.3",
     "prisma": "5.4.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -58,6 +71,7 @@
     "prettier-plugin-prisma": "4.4.0",
     "pretty-quick": "3.1.3",
     "preview-email": "3.0.7",
+    "tsx": "4.20.5",
     "typescript": "^4.8.4",
     "vite-tsconfig-paths": "3.6.0",
     "vitest": "0.25.3"

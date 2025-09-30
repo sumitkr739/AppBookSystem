@@ -1,6 +1,8 @@
 import "./styles/globals.css"
 import { BlitzProvider } from "./blitz-client"
 import { Inter } from "next/font/google"
+import MuiProvider from "./providers/MuiProvider"
+import Navbar from "./components/Navbar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,7 +16,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <BlitzProvider>
-          <>{children}</>
+          <MuiProvider>
+            <Navbar />
+            {children}
+          </MuiProvider>
         </BlitzProvider>
       </body>
     </html>
